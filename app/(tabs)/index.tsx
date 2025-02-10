@@ -5,7 +5,10 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+// este es el documento de la home page, 
+
 export default function HomeScreen() {
+  /*  this teme vieow is a component that pass out the theme to the whole aplication */
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -16,7 +19,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Hola!</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -53,7 +56,7 @@ export default function HomeScreen() {
     </ParallaxScrollView>
   );
 }
-
+// esto crea el stylesheet en ves de usar css, 
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',

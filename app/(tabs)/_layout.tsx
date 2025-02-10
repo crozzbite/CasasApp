@@ -8,6 +8,8 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+// este documento es el layout en el que se ve el footer con home y explore 
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
