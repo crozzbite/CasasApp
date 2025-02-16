@@ -4,8 +4,11 @@ import axios from 'axios';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -22,18 +25,19 @@ export default function HomeScreen() {
       ]);
 
       console.log('Respuesta del servidor:', response.data);
-    } catch (error) {
+    } catch (error : unknown) {
       // Si hay un error, muestra un mensaje de error
       Alert.alert('Error', 'Credenciales incorrectas', [
         { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
 
-      // console.error('Error en el login:', error.response?.data || error.message);
+       console.error('Error en el login:', error.response?.data || error.message);
     }
   };
 
   const handleRegisterRedirect = () => {
     // Aquí puedes agregar la navegación a la pantalla de registro
+    router.push('/explore'); 
     Alert.alert('Registro', 'Redirigiendo a la pantalla de registro...');
     console.log('Redirigiendo a la pantalla de registro');
   };
@@ -43,7 +47,7 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
+          source={require('@/assets/images/logo.jpg')}
           style={styles.reactLogo}
         />
       }>
@@ -92,8 +96,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   reactLogo: {
-    height: 178,
-    width: 290,
+    height: 250,
+    width: 553,
     bottom: 0,
     left: 0,
     position: 'absolute',

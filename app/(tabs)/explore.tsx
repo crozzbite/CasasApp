@@ -5,12 +5,16 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
+
 
 export default function RegisterScreen() {
   const [handle, setHandle] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const router = useRouter();
+  
 
   const handleRegister = async () => {
     try {
@@ -36,6 +40,9 @@ export default function RegisterScreen() {
       // console.error('Error en el registro:', error.response?.data || error.message);
     }
   };
+  const handleLoginRedirect = () => {
+    router.push('/(tabs)/index');
+  }
 
   return (
     <ParallaxScrollView
@@ -82,6 +89,11 @@ export default function RegisterScreen() {
           secureTextEntry
         />
         <Button title="Registrarse" onPress={handleRegister} />
+        <TouchableOpacity onPress={handleLoginRedirect}>
+                  <ThemedText style={styles.registerText}>
+                    ¿Tienes cuenta? <ThemedText style={styles.registerLink}>Ingresa aquí</ThemedText>
+                  </ThemedText>
+                </TouchableOpacity>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -110,5 +122,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingHorizontal: 8,
     backgroundColor: '#fff', // Fondo blanco para los inputs
+  },
+  registerText: {
+    marginTop: 16,
+    textAlign: 'center',
+    color: '#666', // Color del texto
+  },
+  registerLink: {
+    color: '#007BFF', // Color del enlace
+    fontWeight: 'bold',
   },
 });
